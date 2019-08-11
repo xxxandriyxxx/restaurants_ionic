@@ -1,0 +1,78 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button *ngIf="showMakeOrder"></ion-menu-button>
+            <ion-back-button *ngIf="!showMakeOrder" defaultHref="/restaurants"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <span class="bold-color">{{restaurantName}}</span>
+        </ion-title>
+        <ion-button *ngIf="!showMakeOrder" id="basket-button" fill="outline" slot="end" [disabled]="!totalAmount"
+                    (click)="showMakeOrder = true">
+            <ion-icon slot="start" name="basket"></ion-icon>
+            {{totalAmount}}
+        </ion-button>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!showMakeOrder">
+    <ion-card id="signInMessage" *ngIf="!showBuy">
+        Please, <a routerLink="/sign-in">sign in</a> to be able to make an order
+    </ion-card>
+    <ion-card *ngFor="let sect of menuSections">
+        <ion-card-header class="section-header">
+            <div><span class="bold-color-2">{{sect.name}}</span></div>
+            <button *ngIf="!showSect[sect.id]" (click)="showSection(sect.id)" class="hide-button"><span
+                    class="bold-color-2">&#9660;</span>
+            </button>
+            <button *ngIf="showSect[sect.id]" (click)="hideSection(sect.id)" class="hide-button"><span
+                    class="bold-color-2">&#9650;</span>
+            </button>
+        </ion-card-header>
+
+        <ion-card-content *ngIf="showSect[sect.id]">
+            <ion-list *ngFor="let dish of sect.dishes">
+                <hr>
+                <div><span class="bold">{{dish.name}}</span></div>
+                <div>{{dish.description}}</div>
+                <div><span class="bold">Price:   </span>{{dish.price}}</div>
+                <ion-button *ngIf="showBuy" fill="outline" slot="end" size="small" (click)="addDishToOrder(dish.id)">buy</ion-button>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+
+<ion-content *ngIf="showMakeOrder">
+    <ion-card id="totalSum"><span class="bold">Total sum:   </span>{{totalCost | number}}</ion-card>
+
+    <div class="order-buttons">
+        <ion-button size="small" (click)="cancel()">Menu</ion-button>
+        <ion-button size="small" color="success" [disabled]="!totalAmount" (click)="placeOrder()">Order now
+        </ion-button>
+    </div>
+
+    <ion-card *ngFor="let d of newOrder.dishes">
+        <ion-card-header class="section-header">
+            <div><span class="bold-color-2">{{d.name}}</span></div>
+        </ion-card-header>
+
+        <ion-card-content>
+            <div><span class="bold">Amount:  </span>{{newOrder.amount[newOrder.dishes.indexOf(d)]}}</div>
+            <div><span class="bold">Price:  </span>{{d.price}}</div>
+            <div><span class="bold">Cost:  </span>{{newOrder.amount[newOrder.dishes.indexOf(d)] * d.price | number}}
+            </div>
+            <div class="order-buttons">
+                <ion-button fill="outline" slot="end" size="small" color="success"
+                            (click)="increaseAmount(newOrder.dishes.indexOf(d))">+
+                </ion-button>
+                <ion-button fill="outline" slot="end" size="small" color="warning"
+                            (click)="reduceAmount(newOrder.dishes.indexOf(d))">-
+                </ion-button>
+                <ion-button fill="outline" slot="end" size="small" color="danger"
+                            (click)="deleteDish(newOrder.dishes.indexOf(d))">X
+                </ion-button>
+            </div>
+
+        </ion-card-content>
+    </ion-card>
+</ion-content>

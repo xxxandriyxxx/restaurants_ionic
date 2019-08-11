@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            My orders
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card class="order" *ngFor="let ord of myOrders">
+        <ion-card-header>
+            <div><span class="bold-color">{{ord.restaurant.name}}</span></div>
+        </ion-card-header>
+        <ion-card-content>
+            <div><span class="bold-color-2">Date:   </span>  {{ord.date | date: 'dd LLL yyyy, HH:mm'}}</div>
+            <div><span class="bold-color-2">Status:   </span> {{ord.status}}</div>
+            <div><span class="bold-color-2">Total sum:   </span> {{totalCost[myOrders.indexOf(ord)] | number}}</div>
+        </ion-card-content>
+        <ion-card-content>
+            <div class="order-details" *ngFor="let dish of ord.dishes">
+                <hr>
+                <div><span class="bold">Dish:   </span> {{dish.name}}</div>
+                <div><span class="bold">Amount:   </span> {{ord.amount[ord.dishes.indexOf(dish)]}}</div>
+                <div><span class="bold">Price:   </span> {{dish.price}}</div>
+                <div><span class="bold">Cost:   </span> {{ord.amount[ord.dishes.indexOf(dish)] * dish.price | number}}
+                </div>
+            </div>
+        </ion-card-content>
+        <ion-button expand="block"
+                    [disabled]="ord.status !== ('ORDERED' || 'CONFIRMED_BY_RESTAURANT')"
+                    (click)="cancelOrder(ord)">Cancel
+        </ion-button>
+    </ion-card>
+
+
+</ion-content>

@@ -1,24 +1,62 @@
 <ion-app>
-  <ion-split-pane>
-    <ion-menu type="overlay">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet main></ion-router-outlet>
-  </ion-split-pane>
+    <ion-split-pane>
+        <ion-menu type="overlay">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title>Menu</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+                <ion-list>
+
+                    <ion-menu-toggle auto-hide="true">
+                        <ion-item [routerDirection]="'back'" routerLink="/restaurants">
+                            <ion-icon slot="start" name="home"></ion-icon>
+                            <ion-label>
+                                Restaurants
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle *ngIf="userLogged" auto-hide="true">
+                        <ion-item [routerDirection]="'back'" routerLink="/my-orders">
+                            <ion-icon slot="start" name="cart"></ion-icon>
+                            <ion-label>
+                                My orders
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle *ngIf="!userLogged" auto-hide="true">
+                        <ion-item [routerDirection]="'back'" routerLink="/sign-in">
+                            <ion-icon slot="start" name="finger-print"></ion-icon>
+                            <ion-label>
+                                Sign in
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle *ngIf="!userLogged" auto-hide="true">
+                        <ion-item [routerDirection]="'back'" routerLink="/sign-up">
+                            <ion-icon slot="start" name="person-add"></ion-icon>
+                            <ion-label>
+                                Sign up
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                    <ion-menu-toggle *ngIf="userLogged" auto-hide="true">
+                        <ion-item [routerDirection]="'back'" routerLink="/sign-out">
+                            <ion-icon slot="start" name="walk"></ion-icon>
+                            <ion-label>
+                                Sign out
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet main></ion-router-outlet>
+    </ion-split-pane>
 </ion-app>

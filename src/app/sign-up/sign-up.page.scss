@@ -1,0 +1,24 @@
+
+.form {
+  padding: 15px;
+}
+
+.form > div {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  word-break: break-all;
+}
+
+.form > div {
+  display: flex;
+  justify-content: space-around;
+}
+
+hr {
+  border: 1px solid silver;
+  margin-bottom: 25px;
+}

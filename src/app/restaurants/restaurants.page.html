@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Restaurants
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card *ngFor="let rest of restaurants">
+        <ion-card-header>
+            <ion-img src="{{dataService.pathToResources}}/{{rest.logo}}"></ion-img>
+            <ion-card-title><span class="bold-color">{{rest.name}}</span></ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <div><span class="bold">Address: </span>{{rest.address}}</div>
+            <div><span class="bold">Phone: </span>{{rest.phoneNumber}}</div>
+            <div><span class="bold">Site: </span><a href="https://{{rest.site}}" target="_blank">{{rest.site}}</a></div>
+        </ion-card-content>
+        <ion-card-content>
+            {{rest.about}}
+        </ion-card-content>
+        <ion-button expand="block" (click)="goToRestaurant(rest.id, rest.name)">Menu</ion-button>
+    </ion-card>
+
+</ion-content>

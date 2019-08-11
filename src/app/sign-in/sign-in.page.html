@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Sign in
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form #signInForm='ngForm' class="form">
+        <label><b>Login or email:</b></label>
+        <ion-input
+                [(ngModel)]="logForm.loginEmail"
+                [ngStyle]="{border: usernameInp.invalid && usernameInp.dirty? '1px solid red' : '1px solid green'}"
+                #usernameInp='ngModel'
+                required pattern="({{dataService.passLoginRegExp.source}})|({{dataService.emailRegExp.source}})"
+                placeholder="login / email"
+                size="25"
+                type="text"
+                name="username"
+                autocomplete="off"></ion-input>
+        <br>
+        <label><b>Password:</b></label>
+        <ion-input
+                [(ngModel)]="logForm.password"
+                [ngStyle]="{border: passwordInp.invalid && passwordInp.dirty? '1px solid red' : '1px solid green'}"
+                #passwordInp='ngModel'
+                required pattern="{{dataService.passLoginRegExp.source}}"
+                placeholder="password"
+                size="25"
+                type="password"
+                name="password"></ion-input>
+        <br>
+        <ion-button expand="block"
+                    [disabled]="signInForm.invalid"
+                    (click)="login()"
+        >Sign in
+        </ion-button>
+    </form>
+</ion-content>
