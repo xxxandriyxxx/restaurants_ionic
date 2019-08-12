@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            API
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <form #form='ngForm'>
+        <p>Set your API URL:</p>
+        <ion-input
+                [(ngModel)]="newUrl"
+                [ngStyle]="{border: urlInp.invalid && urlInp.dirty? '1px solid red' : '1px solid green'}"
+                #urlInp='ngModel'
+                required
+                value="url"
+                [placeholder]="url"
+                type="text"
+                name="url"></ion-input>
+        <br>
+        <ion-button expand="block" [disabled]="form.invalid" (click)="setUrl()">Set</ion-button>
+    </form>
+
+
+</ion-content>

@@ -54,6 +54,15 @@
                         </ion-item>
                     </ion-menu-toggle>
 
+                    <ion-menu-toggle auto-hide="true">
+                        <ion-item [routerDirection]="'back'" routerLink="/api">
+                            <ion-icon slot="start" name="settings"></ion-icon>
+                            <ion-label>
+                                API
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+
                 </ion-list>
             </ion-content>
         </ion-menu>

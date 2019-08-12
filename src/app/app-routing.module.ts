@@ -9,10 +9,11 @@ const routes: Routes = [
     },
     {path: 'sign-in', loadChildren: './sign-in/sign-in.module#SignInPageModule'},
     {path: 'restaurants', loadChildren: './restaurants/restaurants.module#RestaurantsPageModule'},
-    {path: 'restaurants/:id', loadChildren: './single-restaurant/single-restaurant.module#SingleRestaurantPageModule'},
     {path: 'sign-up', loadChildren: './sign-up/sign-up.module#SignUpPageModule'},
     {path: 'sign-out', loadChildren: './sign-out/sign-out.module#SignOutPageModule'},
-    {path: 'my-orders', loadChildren: './my-orders/my-orders.module#MyOrdersPageModule'}
+    {path: 'my-orders', loadChildren: './my-orders/my-orders.module#MyOrdersPageModule'},
+    {path: 'api', loadChildren: './api/api.module#APIPageModule'},
+    {path: 'restaurants/:id', loadChildren: './restaurant-single/restaurant-single.module#RestaurantSinglePageModule'}
 ];
 
 @NgModule({

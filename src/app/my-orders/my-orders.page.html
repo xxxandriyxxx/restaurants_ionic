@@ -19,8 +19,6 @@
             <div><span class="bold-color-2">Date:   </span>  {{ord.date | date: 'dd LLL yyyy, HH:mm'}}</div>
             <div><span class="bold-color-2">Status:   </span> {{ord.status}}</div>
             <div><span class="bold-color-2">Total sum:   </span> {{totalCost[myOrders.indexOf(ord)] | number}}</div>
-        </ion-card-content>
-        <ion-card-content>
             <div class="order-details" *ngFor="let dish of ord.dishes">
                 <hr>
                 <div><span class="bold">Dish:   </span> {{dish.name}}</div>

@@ -1,19 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../services/data.service';
-import {MainService} from '../services/main.service';
 import {MenuSection} from '../models/MenuSection';
 import {Dish} from '../models/Dish';
 import {Order} from '../models/Order';
+import {MainService} from '../services/main.service';
+import {DataService} from '../services/data.service';
 import {ActivatedRoute} from '@angular/router';
-import {OrderStatus} from '../models/OrderStatus';
 import {AlertController} from '@ionic/angular';
+import {OrderStatus} from '../models/OrderStatus';
 
 @Component({
-    selector: 'app-single-restaurant',
-    templateUrl: './single-restaurant.page.html',
-    styleUrls: ['./single-restaurant.page.scss'],
+    selector: 'app-restaurant-single',
+    templateUrl: './restaurant-single.page.html',
+    styleUrls: ['./restaurant-single.page.scss'],
 })
-export class SingleRestaurantPage implements OnInit {
+export class RestaurantSinglePage implements OnInit {
 
     showMakeOrder = false;
     showBuy = false;
@@ -93,12 +93,11 @@ export class SingleRestaurantPage implements OnInit {
 
 
     showSection(id: number) {
-        this.showSect[id] = true;
-    }
-
-    hideSection(id: number) {
-        this.showSect[id] = false;
-
+        if (this.showSect[id] === true) {
+            this.showSect[id] = false;
+        } else {
+            this.showSect[id] = true;
+        }
     }
 
 
@@ -160,4 +159,6 @@ export class SingleRestaurantPage implements OnInit {
         });
         await alert.present();
     }
+
 }
+

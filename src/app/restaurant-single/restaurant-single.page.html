@@ -20,14 +20,14 @@
         Please, <a routerLink="/sign-in">sign in</a> to be able to make an order
     </ion-card>
     <ion-card *ngFor="let sect of menuSections">
-        <ion-card-header class="section-header">
+        <ion-card-header class="section-header" (click)="showSection(sect.id)">
             <div><span class="bold-color-2">{{sect.name}}</span></div>
-            <button *ngIf="!showSect[sect.id]" (click)="showSection(sect.id)" class="hide-button"><span
+            <div *ngIf="!showSect[sect.id]" class="hide-button"><span
                     class="bold-color-2">&#9660;</span>
-            </button>
-            <button *ngIf="showSect[sect.id]" (click)="hideSection(sect.id)" class="hide-button"><span
+            </div>
+            <div *ngIf="showSect[sect.id]" class="hide-button"><span
                     class="bold-color-2">&#9650;</span>
-            </button>
+            </div>
         </ion-card-header>
 
         <ion-card-content *ngIf="showSect[sect.id]">
@@ -36,7 +36,9 @@
                 <div><span class="bold">{{dish.name}}</span></div>
                 <div>{{dish.description}}</div>
                 <div><span class="bold">Price:   </span>{{dish.price}}</div>
-                <ion-button *ngIf="showBuy" fill="outline" slot="end" size="small" (click)="addDishToOrder(dish.id)">buy</ion-button>
+                <ion-button *ngIf="showBuy" fill="outline" slot="end" size="small" (click)="addDishToOrder(dish.id)">
+                    buy
+                </ion-button>
             </ion-list>
         </ion-card-content>
     </ion-card>
