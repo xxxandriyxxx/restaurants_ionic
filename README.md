@@ -1,4 +1,4 @@
-# Restaurants ionic
+# Restaurants Ionic
 This is an Ionic project "Restaurants".
 
 Using this app you can browse the list of registered restaurants, sign up, place orders, change the status of your orders.
