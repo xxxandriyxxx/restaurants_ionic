@@ -15,19 +15,6 @@ export class AppComponent {
 
     userLogged: boolean;
 
-    public appPages = [
-        {
-            title: 'Home',
-            url: '/home',
-            icon: 'home'
-        },
-        {
-            title: 'List',
-            url: '/list',
-            icon: 'list'
-        }
-    ];
-
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,

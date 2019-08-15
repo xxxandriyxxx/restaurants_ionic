@@ -12,14 +12,16 @@
 <ion-content>
 
     <form #form='ngForm'>
-        <p>Set your API URL:</p>
+        <ion-card-content>
+            <span id="bold-color-2">Existing API URL: </span>{{url}}
+        </ion-card-content>
+        <hr>
+        <label><b>New API URL:</b></label>
         <ion-input
                 [(ngModel)]="newUrl"
                 [ngStyle]="{border: urlInp.invalid && urlInp.dirty? '1px solid red' : '1px solid green'}"
                 #urlInp='ngModel'
                 required
-                value="url"
-                [placeholder]="url"
                 type="text"
                 name="url"></ion-input>
         <br>

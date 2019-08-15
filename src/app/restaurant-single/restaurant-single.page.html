@@ -45,7 +45,7 @@
 </ion-content>
 
 <ion-content *ngIf="showMakeOrder">
-    <ion-card id="totalSum"><span class="bold">Total sum:   </span>{{totalCost | number}}</ion-card>
+    <ion-card id="totalSum"><span class="bold-color-2">Total sum:   </span>{{totalCost | number}}</ion-card>
 
     <div class="order-buttons">
         <ion-button size="small" (click)="cancel()">Menu</ion-button>
@@ -65,13 +65,13 @@
             </div>
             <div class="order-buttons">
                 <ion-button fill="outline" slot="end" size="small" color="success"
-                            (click)="increaseAmount(newOrder.dishes.indexOf(d))">+
+                            (click)="increaseAmount(newOrder.dishes.indexOf(d))">&#43;
                 </ion-button>
                 <ion-button fill="outline" slot="end" size="small" color="warning"
-                            (click)="reduceAmount(newOrder.dishes.indexOf(d))">-
+                            (click)="reduceAmount(newOrder.dishes.indexOf(d))">&#8722;
                 </ion-button>
                 <ion-button fill="outline" slot="end" size="small" color="danger"
-                            (click)="deleteDish(newOrder.dishes.indexOf(d))">X
+                            (click)="deleteDish(newOrder.dishes.indexOf(d))">&#215;
                 </ion-button>
             </div>
 

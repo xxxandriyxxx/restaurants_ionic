@@ -6,10 +6,8 @@ import {Observable} from 'rxjs';
 import {TransferMessage} from '../models/TransferMessage';
 import {Owner} from '../models/Owner';
 import {BasicData} from '../models/BasicData';
-import {User} from '../models/User';
 import {Restaurant} from '../models/Restaurant';
 import {MenuSection} from '../models/MenuSection';
-import {Dish} from '../models/Dish';
 import {Order} from '../models/Order';
 
 @Injectable({
@@ -18,7 +16,6 @@ import {Order} from '../models/Order';
 export class MainService {
 
     url = localStorage.getItem('_urlRestApi');
-    // url = this.dataService.url;
 
     constructor(
         private http: HttpClient,

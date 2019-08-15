@@ -15,8 +15,10 @@ export class SignOutPage implements OnInit {
     }
 
     logout() {
-        localStorage.clear();
-        this.router.navigate(['/restaurants']);
+        localStorage.removeItem('_token');
+        localStorage.removeItem('_userClass');
+        localStorage.removeItem('_userId');
+        this.router.navigate(['/']);
     }
 
 }
