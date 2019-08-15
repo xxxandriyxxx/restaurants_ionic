@@ -12,6 +12,7 @@ import {DataService} from '../services/data.service';
 export class RestaurantsPage implements OnInit {
 
     restaurants: Restaurant[] = [];
+    pathToLogo = '';
 
     constructor(private mainService: MainService,
                 private router: Router,
@@ -26,11 +27,20 @@ export class RestaurantsPage implements OnInit {
                 error => {
                     console.log(error);
                 });
+
+        this.setPathToLogo();
     }
 
 
     goToRestaurant(id, restName) {
         this.router.navigate(['/restaurants/' + id], {queryParams: {name: restName}});
+    }
+
+    setPathToLogo() {
+        this.pathToLogo = localStorage.getItem('_urlRestApi') + '/logo';
+        if (this.pathToLogo == null) {
+            this.pathToLogo = this.dataService.url + '/logo';
+        }
     }
 
 

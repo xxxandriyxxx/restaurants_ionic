@@ -23,7 +23,7 @@ export class RestaurantSinglePage implements OnInit {
     menuSections: MenuSection[] = [];
     ordDishes: Dish[] = [];
     newOrder: Order = new Order();
-    private restaurantName = '';
+    restaurantName = '';
     showSect: boolean [] = [];
 
 
